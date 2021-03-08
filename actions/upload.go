@@ -9,6 +9,7 @@ import (
 	"mime/multipart"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/urfave/cli/v2"
@@ -24,7 +25,7 @@ func Upload(c *cli.Context) error {
 
 	bodyBuf := &bytes.Buffer{}
 	writer := multipart.NewWriter(bodyBuf)
-	fileWriter, err := writer.CreateFormFile("file", local_file_path)
+	fileWriter, err := writer.CreateFormFile("file", filepath.Base(local_file_path))
 	f, err := os.Open(local_file_path)
 	if err != nil {
 		log.Fatal("文件打开失败")
