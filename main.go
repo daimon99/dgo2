@@ -6,7 +6,6 @@ import (
 	"time"
 
 	"github.com/daimon99/dgo2/actions"
-
 	"github.com/urfave/cli/v2"
 )
 
@@ -33,6 +32,16 @@ func main() {
 				Usage:     "下载文件。用content-disposition",
 				ArgsUsage: "url",
 				Action:    actions.Wget,
+			},
+			{
+				Name:   "pipconf",
+				Usage:  "生成pip.conf。先生成全局的，失败会只生成用户空间的",
+				Action: actions.Pipconf,
+			},
+			{
+				Name:   "pypirc",
+				Usage:  "生成 .pypirc 文件",
+				Action: actions.Pypirc,
 			},
 		},
 	}
