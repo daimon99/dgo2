@@ -12,7 +12,7 @@ import (
 func main() {
 	app := &cli.App{
 		Name:     "老戴工具箱",
-		Version:  "v1.0.0",
+		Version:  "v1.1.0",
 		Compiled: time.Now(),
 		Authors: []*cli.Author{
 			&cli.Author{
@@ -42,6 +42,22 @@ func main() {
 				Name:   "pypirc",
 				Usage:  "生成 .pypirc 文件",
 				Action: actions.Pypirc,
+			},
+			{
+				Name:  "enc",
+				Usage: "加密",
+				Flags: []cli.Flag{
+					&cli.BoolFlag{Name: "oneline", Value: false},
+				},
+				Action: actions.Enc,
+			},
+			{
+				Name:  "dec",
+				Usage: "解密",
+				Flags: []cli.Flag{
+					&cli.BoolFlag{Name: "oneline", Value: false},
+				},
+				Action: actions.Dec,
 			},
 		},
 	}
